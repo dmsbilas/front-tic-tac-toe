@@ -1,0 +1,38 @@
+{
+  "name": "tic-tac-toe",
+  "version": "1.0.0",
+  "description": "A Tic Tac Toe Game",
+  "main": "src/index.js",
+  "author": "Van",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rimraf ./dist",
+    "build": "npm run clean && webpack --config webpack.config.js --progress",
+    "start": "webpack-dev-server --config webpack.config.js",
+    "test": "jest",
+    "surge": "npm run build && surge ./dist"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "classnames": "^2.2.6",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "html-webpack-plugin": "^3.2.0",
+    "jest": "^24.8.0",
+    "@material-ui/core": "^4.2.1",
+    "rimraf": "^2.6.3",
+    "webpack": "^4.36.1",
+    "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2"
+  }
+}
