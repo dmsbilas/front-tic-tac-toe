@@ -15,18 +15,12 @@ const BackendLog = ({player, board} ) => {
   };
   const [gameStatus, getGameStatus] = useState(state);
 
-  const saveState = axios.post(apiURL+saveEndPoint, {data : JSON.stringify(state)}).then(data=>{
-    const t3GameState = JSON.parse(localStorage.getItem('t3GameState')) || null ;
-
-    axios.get(apiURL+getEndPoint).then((response)=>{
+  const saveState = axios.post(apiURL+saveEndPoint, {data : JSON.stringify(state)}).then((response) => {
+      console.log("Data saved to server:",response);
       getGameStatus(response.data);
-    });
-
+  }, (error) => {
+      console.log(new Error(error));
   });
-
-  // const getState = axios.get(apiURL+getEndPoint).then((serverRes)=>{
-  //   if(board ===
-  // });
 
 
   return (
