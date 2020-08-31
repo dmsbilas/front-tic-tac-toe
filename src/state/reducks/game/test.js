@@ -1,4 +1,8 @@
-import reducer from './reducers';
+// module.hot.accept('../reducers/reducers', () => {
+//     const reducer = require('./reducers').default; // <-- I added .default here
+//     store.replaceReducer(nextRootReducer);
+// });
+import * as reducer from './reducers';
 import * as actions from './actions';
 import * as operations from './operations';
 
@@ -46,7 +50,7 @@ describe('Game Duck', () => {
       const action = { type: 'NOT_A_GAME_TYPE' };
       // this should produce the inital state since the type is not one that we handle 
       // in our reducer
-      const result = reducer(undefined, action);
+      const result = reducer.default(undefined, action);
 
       expect(result).toEqual(expectedState);
     });
@@ -71,7 +75,7 @@ describe('Game Duck', () => {
       // the action that will produce the new state
       const action = actions.newGame();
       // the resulting new state
-      const result = reducer(state, action);
+      const result = reducer.default(state, action);
 
       expect(result).toEqual(expectedState);
     });
@@ -92,7 +96,7 @@ describe('Game Duck', () => {
       };
 
       const action = actions.gameover();
-      const result = reducer(state, action);
+      const result = reducer.default(state, action);
 
       expect(result).toEqual(expectedState);
     });
@@ -121,7 +125,7 @@ describe('Game Duck', () => {
       const col = 2;
 
       const action = actions.movePlayer(player, row, col);
-      const result = reducer(state, action);
+      const result = reducer.default(state, action);
 
       expect(result).toEqual(expectedState);
     });
@@ -151,7 +155,7 @@ describe('Game Duck', () => {
 
 
       const action = actions.saveToApi(state);
-      const result = reducer(state, action);
+      const result = reducer.default(state, action);
 
       expect(result).toEqual(expectedState);
     });
@@ -172,7 +176,7 @@ describe('Game Duck', () => {
       };
 
       const action = actions.winner(1);
-      const result = reducer(state, action);
+      const result = reducer.default(state, action);
 
       expect(result).toEqual(expectedState);
     });
@@ -193,7 +197,7 @@ describe('Game Duck', () => {
       };
 
       const action = actions.switchPlayer(2);
-      const result = reducer(state, action);
+      const result = reducer.default(state, action);
 
       expect(result).toEqual(expectedState);
 
@@ -207,7 +211,7 @@ describe('Game Duck', () => {
       };
 
       const action2 = actions.switchPlayer(1);
-      const result2 = reducer(state, action);
+      const result2 = reducer.default(state, action);
 
       expect(result2).toEqual(expectedState2);
     });
