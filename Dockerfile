@@ -2,6 +2,7 @@ FROM node:14.5.0
 WORKDIR /app
 COPY package.json /app
 COPY webpack.config.js /app
+COPY .babelrc /app
 COPY src /app/src
 RUN npm install
 
