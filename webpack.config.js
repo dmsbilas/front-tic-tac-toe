@@ -16,6 +16,7 @@ module.exports = {
     vendor: dependencies
   },
 
+
   output: {
     // we are going to output everythign into the 'dist' directory,
     path: path.resolve(__dirname, 'dist'),
@@ -29,13 +30,20 @@ module.exports = {
 
   // setting up babel-loader to compile our js/jsx files
   module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
-      }
-    ]
+      rules: [
+          {
+              test: /\.(js|jsx)$/,
+              exclude: /node_modules/,
+              use: {
+                  loader: 'babel-loader',
+                  options: {
+                      presets: ['@babel/react'],
+                      plugins: ['@babel/plugin-syntax-jsx'],
+                      cacheDirectory: true,
+                  },
+              }
+          }
+      ]
   },
 
   // tell webpack to split our vendors bundle into chunks
@@ -61,6 +69,7 @@ module.exports = {
     contentBase: path.join(__dirname, '/'),
     historyApiFallback: true
   },
+
   // for debugging the compiled code
   devtool: 'source-map'
 };
